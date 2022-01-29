@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, StatusBar } from "react-native";
 import { Button } from "../../components/Button";
 import { Skill } from "../../components/Skill";
 import { ContainerView, Input, TitleHome, TitleSkill } from "./styles";
 
 export function Home() {
-	const [newSkill, setNewSkill] = useState("");
-	const [mySkills, setMySkills] = useState([]);
+	const [newSkill, setNewSkill] = useState<string>("");
+	const [mySkills, setMySkills] = useState<string[]>([]);
 
 	function handleAddNewSkill() {
 		if (newSkill !== "") {
@@ -15,9 +15,13 @@ export function Home() {
 		}
 	}
 
-	function addSkill(skill) {
+	function addSkill(skill: string) {
 		setMySkills([...mySkills, skill]);
 	}
+
+  useEffect(() => {
+
+  }, [])
 
 	return (
 		<ContainerView>

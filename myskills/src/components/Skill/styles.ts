@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 export const SkillTouch = styled.TouchableOpacity`
 	background-color: #1f1e25;
