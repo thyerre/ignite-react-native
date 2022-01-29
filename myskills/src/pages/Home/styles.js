@@ -16,7 +16,7 @@ export const TitleSkill = styled.Text`
     font-size: 24px;
     color: #fff;
     font-weight: bold;
-    margin-top: 20px;
+    margin: 20px 0px;
 `;
 
 export const Input = styled.TextInput`

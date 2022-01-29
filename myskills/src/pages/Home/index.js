@@ -1,25 +1,22 @@
 import React, { useState } from "react";
-import { StatusBar } from "react-native";
+import { FlatList, StatusBar } from "react-native";
 import { Button } from "../../components/Button";
 import { Skill } from "../../components/Skill";
-import {
-	ContainerView,
-	Input,
-	TitleHome,
-	TitleSkill,
-} from "./styles";
+import { ContainerView, Input, TitleHome, TitleSkill } from "./styles";
 
 export function Home() {
 	const [newSkill, setNewSkill] = useState("");
 	const [mySkills, setMySkills] = useState([]);
 
 	function handleAddNewSkill() {
-		addSkill(newSkill);
-		setNewSkill("");
+		if (newSkill !== "") {
+			addSkill(newSkill);
+			setNewSkill("");
+		}
 	}
 
 	function addSkill(skill) {
-		setMySkills((oldState) => [...oldState, skill]);
+		setMySkills([...mySkills, skill]);
 	}
 
 	return (
@@ -35,15 +32,21 @@ export function Home() {
 				placeholder="new skill"
 				onChangeText={setNewSkill}
 				placeholderTextColor="#555"
-        value={newSkill}
+				value={newSkill}
 			/>
 
-      <Button />
+			<Button onPress={handleAddNewSkill} />
 
 			<TitleSkill>My Skills</TitleSkill>
-			{mySkills.map((skill) => (
-				<Skill />
-			))}
+
+			<FlatList
+				data={mySkills}
+				keyExtractor={(item) => item}
+				renderItem={({ item }) => (
+          <Skill value={item} key={item} />
+        )}
+        showsVerticalScrollIndicator={false}
+			/>
 		</ContainerView>
 	);
 }
