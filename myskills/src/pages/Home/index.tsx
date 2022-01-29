@@ -19,9 +19,7 @@ export function Home() {
 		setMySkills([...mySkills, skill]);
 	}
 
-  useEffect(() => {
-
-  }, [])
+	useEffect(() => {}, []);
 
 	return (
 		<ContainerView>
@@ -39,17 +37,15 @@ export function Home() {
 				value={newSkill}
 			/>
 
-			<Button onPress={handleAddNewSkill} />
+			<Button onPress={handleAddNewSkill} title="Add" />
 
 			<TitleSkill>My Skills</TitleSkill>
 
 			<FlatList
 				data={mySkills}
 				keyExtractor={(item) => item}
-				renderItem={({ item }) => (
-          <Skill value={item} key={item} />
-        )}
-        showsVerticalScrollIndicator={false}
+				renderItem={({ item }) => <Skill value={item} key={item} />}
+				showsVerticalScrollIndicator={false}
 			/>
 		</ContainerView>
 	);
