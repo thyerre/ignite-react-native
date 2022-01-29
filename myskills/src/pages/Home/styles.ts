@@ -5,7 +5,7 @@ export const ContainerView = styled.View`
   padding: 20px;
   background-color: #121015;
 `;
-  
+
 export const TitleHome = styled.Text`
     font-size: 24px;
     color: #fff;

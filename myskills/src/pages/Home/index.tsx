@@ -8,15 +8,19 @@ export function Home() {
 	const [newSkill, setNewSkill] = useState<string>("");
 	const [mySkills, setMySkills] = useState<string[]>([]);
 
-	function handleAddNewSkill() {
+	function handleAddNewSkill(): void {
 		if (newSkill !== "") {
 			addSkill(newSkill);
 			setNewSkill("");
 		}
 	}
 
-	function addSkill(skill: string) {
+	function addSkill(skill: string): void {
 		setMySkills([...mySkills, skill]);
+	}
+
+	function handleRemoveSkill(skill: string): void {
+		setMySkills(mySkills.filter((elem) => elem !== skill));
 	}
 
 	useEffect(() => {}, []);
@@ -44,7 +48,13 @@ export function Home() {
 			<FlatList
 				data={mySkills}
 				keyExtractor={(item) => item}
-				renderItem={({ item }) => <Skill value={item} key={item} />}
+				renderItem={({ item }) => (
+					<Skill 
+						name={item} 
+						key={item} 
+						onPress={() => handleRemoveSkill(item)} 
+					/>
+				)}
 				showsVerticalScrollIndicator={false}
 			/>
 		</ContainerView>

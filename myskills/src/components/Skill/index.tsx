@@ -2,13 +2,14 @@ import React from "react";
 import { SkillTouch, TextSkill } from "./styles";
 
 interface PropSkill {
-	value: string
+	name: string;
+	onPress: () => void
 }
 
-export function Skill({ value }: PropSkill) {
+export function Skill({ name, ...rest}: PropSkill) {
 	return (
-		<SkillTouch>
-			<TextSkill>{value}</TextSkill>
+		<SkillTouch {...rest}>
+			<TextSkill>{name}</TextSkill>
 		</SkillTouch>
 	);
 }
